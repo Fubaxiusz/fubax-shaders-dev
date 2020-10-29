@@ -4,6 +4,7 @@ Fubax ReShade FX shaders (in development)
 This repository collects post-processing shaders written in the ReShade FX shader language, that are not really polished.
 
 To get ReShade visit https://reshade.me
+
 To see more polished shaders https://github.com/Fubaxiusz/fubax-shaders
 
 Installation
