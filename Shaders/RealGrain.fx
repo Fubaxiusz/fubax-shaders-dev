@@ -1,5 +1,5 @@
 /*
-Real Grain PS v0.3.0 (c) 2018 Jacob Maximilian Fober
+Real Grain PS v0.3.1 (c) 2018 Jacob Maximilian Fober
 
 This work is licensed under the Creative Commons 
 Attribution-ShareAlike 4.0 International License. 
@@ -109,7 +109,7 @@ void RealGrainPS(float4 vois : SV_Position, float2 TexCoord : TEXCOORD, out floa
 	// Sample image
 	Image = tex2D(ReShade::BackBuffer, TexCoord).rgb;
 	// Mask out bright pixels  gamma: (sqrt(5)+1)/2
-	float Mask = pow(1 - dot(Image.rgb, LumaCoefficient), GoldenAB);
+	float Mask = pow(abs(1.0 - dot(Image.rgb, LumaCoefficient)), GoldenAB);
 	// Generate noise *  (sqrt(5) + 1) / 4  (to remain brightness)
 	float MicroNoise = SimpleNoise(Seed(TexCoord, Framerate.y));
 	float MacroNoise = tex2D(FilmGrain, TexCoord).r;
