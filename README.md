@@ -16,6 +16,7 @@ Installation
 4. Add the path to the extracted [Shaders](/Shaders) folder to "Effect Search Paths"
 5. Add the path to the extracted [Textures](/Textures) folder to "Texture Search Paths"
 6. Switch back to the "Home" tab and click on "Reload" to load the shaders
+7. Make sure you have [ReShade standard effects](https://github.com/crosire/reshade-shaders/tree/slim) installed too.
 
 Syntax
 ------
