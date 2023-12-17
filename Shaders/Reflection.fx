@@ -1,10 +1,10 @@
 /*
 Reflection PS (c) 2019 Jacob Maximilian Fober
 
-This work is licensed under the Creative Commons 
-Attribution-NonCommercial-NoDerivatives 4.0 International License. 
-To view a copy of this license, visit 
-http://creativecommons.org/licenses/by-nc-nd/4.0/ 
+This work is licensed under the Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International License.
+To view a copy of this license, visit
+http://creativecommons.org/licenses/by-nc-nd/4.0/
 
 For inquiries please contact jakub.m.fober@pm.me
 */
@@ -29,7 +29,7 @@ Normal Map generator is from DisplayDepth.fx by CeeJay.
 Soft light blending mode is from pegtop.net
 */
 
-// version 1.2.1
+// version 1.2.2
 
 
 	  ////////////
@@ -87,13 +87,17 @@ uniform bool AlphaBlending <
 
 #include "ReShade.fxh"
 
-texture ReflectionTex < source = ReflectionImage; > {Width = ReflectionRes; Height = ReflectionRes;};
+texture ReflectionTex < source = ReflectionImage; >
+{
+	Width = ReflectionRes;
+	Height = ReflectionRes;
+	Format = RGBA8;
+};
 sampler ReflectionSampler
 {
 	Texture = ReflectionTex;
 	AddressU = BORDER;
 	AddressV = BORDER;
-	Format = RGBA8;
 };
 
 
@@ -130,7 +134,7 @@ float GetDepth(float2 TexCoord)
 		TexCoord.y = 1.0 - TexCoord.y;
 	#endif
 	float Depth = tex2Dlod( ReShade::DepthBuffer, float4(TexCoord, 0, 0) ).x;
-	
+
 	#if RESHADE_DEPTH_INPUT_IS_LOGARITHMIC
 		const float C = 0.01;
 		Depth = (exp(Depth * log(C + 1.0)) - 1.0) / C;
